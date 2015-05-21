@@ -141,6 +141,7 @@
     <Compile Include="Hash.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="IRepositorioGenerico.cs" />
     <Compile Include="Job.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -178,6 +179,7 @@
     <Compile Include="Registro.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="RepositorioGenerico.cs" />
     <Compile Include="Schema.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -193,6 +195,7 @@
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="T.cs" />
     <Compile Include="TiposClientes.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
