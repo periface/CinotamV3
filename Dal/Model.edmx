@@ -1,0 +1,2425 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="bdCinotamVersionOTCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="archivoDiplomado">
+          <Key>
+            <PropertyRef Name="idArchivo" />
+          </Key>
+          <Property Name="idArchivo" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="DescripciónArchivo" Type="nvarchar" MaxLength="300" />
+          <Property Name="Archivo" Type="nvarchar" MaxLength="300" />
+          <Property Name="MaxDescargas" Type="int" />
+          <Property Name="idDiplomado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="catCategoriasPost">
+          <Key>
+            <PropertyRef Name="idCategoria" />
+          </Key>
+          <Property Name="idCategoria" Type="int" Nullable="false" />
+          <Property Name="Descripción" Type="nvarchar" MaxLength="80" />
+        </EntityType>
+        <EntityType Name="catCondiciones">
+          <Key>
+            <PropertyRef Name="idCondicion" />
+          </Key>
+          <Property Name="idCondicion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreCondicion" Type="nvarchar" MaxLength="100" />
+          <Property Name="DescripcionCondicion" Type="nvarchar(max)" />
+          <Property Name="idConvocatoria" Type="int" />
+        </EntityType>
+        <EntityType Name="catConvocatoria">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TituloConvocatoria" Type="nvarchar" MaxLength="200" />
+          <Property Name="DescripcionConvocatoria" Type="nvarchar(max)" />
+          <Property Name="FinanciamientoConvocatoria" Type="nvarchar(max)" />
+          <Property Name="idAutor" Type="nvarchar" MaxLength="128" />
+          <Property Name="ObjetivoConvocatoria" Type="nvarchar(max)" />
+          <Property Name="FechaInicio" Type="datetime" />
+          <Property Name="FechaFin" Type="datetime" />
+        </EntityType>
+        <EntityType Name="catDepartamento">
+          <Key>
+            <PropertyRef Name="idDepartamento" />
+          </Key>
+          <Property Name="idDepartamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nomDepartamento" Type="nvarchar" MaxLength="50" />
+          <Property Name="ResponsableId" Type="nvarchar" MaxLength="128" />
+          <Property Name="Proposito" Type="nvarchar(max)" />
+          <Property Name="nivel" Type="int" />
+        </EntityType>
+        <EntityType Name="catDiplomado">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TituloDiplomado" Type="nvarchar" MaxLength="200" />
+          <Property Name="DescripcionDiplomado" Type="nvarchar(max)" />
+          <Property Name="FechaInicio" Type="datetime" />
+          <Property Name="FechaFin" Type="datetime" />
+        </EntityType>
+        <EntityType Name="catEncuesta">
+          <Key>
+            <PropertyRef Name="idEncuesta" />
+          </Key>
+          <Property Name="idEncuesta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fechaEncuesta" Type="datetime" />
+          <Property Name="fechaEncuestaFin" Type="datetime" />
+          <Property Name="descripciónEncuesta" Type="nvarchar(max)" />
+          <Property Name="idAutorEncuesta" Type="nvarchar" MaxLength="128" />
+          <Property Name="Estado" Type="bit" />
+          <Property Name="Clicks" Type="int" />
+          <Property Name="UrlEncuesta" Type="nvarchar(max)" />
+          <Property Name="tituloEncuesta" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="catExpositorExterno">
+          <Key>
+            <PropertyRef Name="idExpositor" />
+          </Key>
+          <Property Name="idExpositor" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="trat" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="80" />
+          <Property Name="ApPaterno" Type="nvarchar" MaxLength="80" />
+          <Property Name="ApMaterno" Type="nvarchar" MaxLength="80" />
+        </EntityType>
+        <EntityType Name="catInformacion">
+          <Key>
+            <PropertyRef Name="idDocumento" />
+          </Key>
+          <Property Name="idDocumento" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="url" Type="nvarchar(max)" />
+          <Property Name="archivo" Type="nvarchar(max)" />
+          <Property Name="idSeccion" Type="int" />
+          <Property Name="Descripcion" Type="nvarchar(max)" />
+          <Property Name="tipoArchivo" Type="nvarchar" MaxLength="30" />
+          <Property Name="tamañoArchivo" Type="nvarchar(max)" />
+          <Property Name="descripcionCorta" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="catMensajes">
+          <Key>
+            <PropertyRef Name="idCorreo" />
+          </Key>
+          <Property Name="idCorreo" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" />
+          <Property Name="ApPaterno" Type="nvarchar" MaxLength="100" />
+          <Property Name="ApMaterno" Type="nvarchar" MaxLength="100" />
+          <Property Name="InistitucionNombre" Type="nvarchar" MaxLength="150" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="50" />
+          <Property Name="Departamento" Type="nvarchar" MaxLength="100" />
+          <Property Name="Correo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mensaje" Type="nvarchar(max)" />
+          <Property Name="FechaEntrada" Type="datetime" />
+          <Property Name="idDepartamentoCanalizacion" Type="int" />
+        </EntityType>
+        <EntityType Name="catModulos">
+          <Key>
+            <PropertyRef Name="idModulo" />
+          </Key>
+          <Property Name="idModulo" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="500" />
+          <Property Name="orden" Type="int" />
+          <Property Name="idTaller" Type="int" />
+        </EntityType>
+        <EntityType Name="catNoticia">
+          <Key>
+            <PropertyRef Name="idNoticia" />
+          </Key>
+          <Property Name="idNoticia" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="NoticiaTitulo" Type="nvarchar(max)" />
+          <Property Name="NoticiaTexto" Type="nvarchar(max)" />
+          <Property Name="NoticiaImagen" Type="nvarchar(max)" />
+          <Property Name="NoticiaFecha" Type="datetime" />
+          <Property Name="Estado" Type="bit" />
+          <Property Name="autorId" Type="nvarchar" MaxLength="128" />
+          <Property Name="revisorId" Type="nvarchar" MaxLength="128" />
+          <Property Name="urlSlug" Type="nvarchar(max)" />
+          <Property Name="HabilitarComentarios" Type="bit" />
+        </EntityType>
+        <EntityType Name="catProyecto">
+          <Key>
+            <PropertyRef Name="idProyecto" />
+          </Key>
+          <Property Name="idProyecto" Type="int" Nullable="false" />
+          <Property Name="ProyectoTitulo" Type="nvarchar" MaxLength="150" />
+          <Property Name="ProyectoDescripcion" Type="nvarchar(max)" />
+          <Property Name="ProyectoUrlSlug" Type="nvarchar" MaxLength="150" />
+          <Property Name="ProyectoArchivo" Type="nvarchar(max)" />
+          <Property Name="autorId" Type="nvarchar" MaxLength="128" />
+          <Property Name="ProyectoFecha" Type="datetime" />
+          <Property Name="ProyectoEstado" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="catRequisitos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DescripcionRequisito" Type="nvarchar(max)" />
+          <Property Name="ArchivoRequisito" Type="nvarchar" MaxLength="300" />
+          <Property Name="idConvocatoria" Type="int" />
+        </EntityType>
+        <EntityType Name="catSeccion">
+          <Key>
+            <PropertyRef Name="idSeccion" />
+          </Key>
+          <Property Name="idSeccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SeccionNombre" Type="nvarchar" MaxLength="100" />
+          <Property Name="tipoSeccion" Type="int" />
+          <Property Name="idCreador" Type="nvarchar" MaxLength="128" />
+          <Property Name="idTipoCliente" Type="int" />
+        </EntityType>
+        <EntityType Name="catSlider">
+          <Key>
+            <PropertyRef Name="idSlider" />
+          </Key>
+          <Property Name="SliderDescripcion" Type="nvarchar" MaxLength="150" />
+          <Property Name="SliderImagen" Type="nvarchar(max)" />
+          <Property Name="SliderUrlSlug" Type="nvarchar" MaxLength="100" />
+          <Property Name="Prioridad" Type="int" />
+          <Property Name="SliderInicio" Type="datetime" />
+          <Property Name="SliderFin" Type="datetime" />
+          <Property Name="Destino" Type="int" />
+          <Property Name="idNoticia" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="idSlider" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="catTalleres">
+          <Key>
+            <PropertyRef Name="idTaller" />
+          </Key>
+          <Property Name="idTaller" Type="int" Nullable="false" />
+          <Property Name="idExpositor" Type="nvarchar" MaxLength="128" />
+          <Property Name="Objetivo" Type="nvarchar(max)" />
+          <Property Name="DirigidoA" Type="nvarchar(max)" />
+          <Property Name="LogroTaller" Type="nvarchar(max)" />
+          <Property Name="Duracion" Type="nvarchar" MaxLength="100" />
+          <Property Name="Cupo" Type="int" />
+          <Property Name="Imagen" Type="nvarchar(max)" />
+          <Property Name="Costo" Type="real" />
+          <Property Name="incluye" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="catVuMotivos">
+          <Key>
+            <PropertyRef Name="idMotivo" />
+          </Key>
+          <Property Name="idMotivo" Type="int" Nullable="false" />
+          <Property Name="idDepartamento" Type="int" />
+          <Property Name="descMotivo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="comentario">
+          <Key>
+            <PropertyRef Name="idComentario" />
+          </Key>
+          <Property Name="idComentario" Type="int" Nullable="false" />
+          <Property Name="contenido" Type="nchar" MaxLength="10" />
+          <Property Name="estado" Type="bit" />
+          <Property Name="fechaCreacion" Type="datetime" />
+          <Property Name="autor" Type="nvarchar" MaxLength="80" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="idPost" Type="int" />
+        </EntityType>
+        <EntityType Name="configuracionSitio">
+          <Key>
+            <PropertyRef Name="idPagina" />
+          </Key>
+          <Property Name="idPagina" Type="int" Nullable="false" />
+          <Property Name="NombreSitioLargo" Type="nvarchar" MaxLength="100" />
+          <Property Name="NombreSitioCorto" Type="nvarchar" MaxLength="50" />
+          <Property Name="antecedentes" Type="nvarchar(max)" />
+          <Property Name="misionvision" Type="nvarchar(max)" />
+          <Property Name="ubicacion" Type="nvarchar" MaxLength="75" />
+          <Property Name="imagenFrontal" Type="nvarchar(max)" />
+          <Property Name="imagenOrganigrama" Type="nvarchar(max)" />
+          <Property Name="SitioDisponible" Type="bit" />
+          <Property Name="ContactoLinea1" Type="nvarchar" MaxLength="100" />
+          <Property Name="ContactoLinea2" Type="nvarchar" MaxLength="100" />
+          <Property Name="ContactoLinea3" Type="nvarchar" MaxLength="100" />
+          <Property Name="Telefono" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Extencion" Type="int" />
+          <Property Name="NombreConfiguracion" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="configuracionSitioDocumentos">
+          <Key>
+            <PropertyRef Name="idDoc" />
+          </Key>
+          <Property Name="idDoc" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar(max)" />
+          <Property Name="urlArchivo" Type="nvarchar(max)" />
+          <Property Name="idSitio" Type="int" />
+        </EntityType>
+        <EntityType Name="contactoConvocatoria">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Empresa" Type="nvarchar" MaxLength="250" />
+          <Property Name="NombreContacto" Type="nvarchar" MaxLength="200" />
+          <Property Name="CorreoElectronico" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="20" />
+          <Property Name="Celular" Type="nvarchar" MaxLength="20" />
+          <Property Name="Sitio" Type="nvarchar" MaxLength="100" />
+          <Property Name="idConvocatoria" Type="int" />
+        </EntityType>
+        <EntityType Name="Counter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Key" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Value" Type="smallint" Nullable="false" />
+          <Property Name="ExpireAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="datosUsuario">
+          <Key>
+            <PropertyRef Name="noEmpleado" />
+          </Key>
+          <Property Name="noEmpleado" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="200" />
+          <Property Name="ApPaterno" Type="nvarchar" MaxLength="200" />
+          <Property Name="ApMaterno" Type="nvarchar" MaxLength="200" />
+          <Property Name="imagen" Type="nvarchar(max)" />
+          <Property Name="idAsp" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="galeriaNoticias">
+          <Key>
+            <PropertyRef Name="idImagen" />
+          </Key>
+          <Property Name="idImagen" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="idNoticia" Type="nvarchar" MaxLength="256" />
+          <Property Name="rutaArchivo" Type="nvarchar" MaxLength="200" />
+          <Property Name="rutaThumbnail" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Hash">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Key" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Field" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Value" Type="nvarchar(max)" />
+          <Property Name="ExpireAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Job">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateId" Type="int" />
+          <Property Name="StateName" Type="nvarchar" MaxLength="20" />
+          <Property Name="InvocationData" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Arguments" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+          <Property Name="ExpireAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="JobParameter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Value" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="JobQueue">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobId" Type="int" Nullable="false" />
+          <Property Name="Queue" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="FetchedAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="List">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Key" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Value" Type="nvarchar(max)" />
+          <Property Name="ExpireAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Permisos">
+          <Key>
+            <PropertyRef Name="idPermiso" />
+          </Key>
+          <Property Name="idPermiso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idEmpleado" Type="nvarchar" MaxLength="128" />
+          <Property Name="horaSalida" Type="datetime" />
+          <Property Name="horaRegreso" Type="datetime" />
+          <Property Name="idAdministrador" Type="nvarchar" MaxLength="128" />
+          <Property Name="razon" Type="nvarchar" MaxLength="250" />
+          <Property Name="autorizado" Type="bit" />
+          <Property Name="observaciones" Type="nvarchar" MaxLength="250" />
+          <Property Name="ipPeticion" Type="nvarchar" MaxLength="50" />
+          <Property Name="fechaRegistro" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="blogTitulo" Type="nvarchar(max)" />
+          <Property Name="blogContenido" Type="nvarchar(max)" />
+          <Property Name="tags" Type="nvarchar(max)" />
+          <Property Name="estado" Type="bit" />
+          <Property Name="fechaCreacion" Type="datetime" />
+          <Property Name="fechaModificacion" Type="datetime" />
+          <Property Name="idAutor" Type="nvarchar" MaxLength="128" />
+          <Property Name="idCategoria" Type="int" />
+          <Property Name="urlSlug" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Registro">
+          <Key>
+            <PropertyRef Name="FolioRegistro" />
+          </Key>
+          <Property Name="FolioRegistro" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="NombreCompleto" Type="nvarchar" MaxLength="150" />
+          <Property Name="Email" Type="nvarchar" MaxLength="20" />
+          <Property Name="RazonSocial" Type="nvarchar" MaxLength="250" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="50" />
+          <Property Name="Localidad" Type="nvarchar" MaxLength="50" />
+          <Property Name="DescripcionEmpresa" Type="nvarchar" MaxLength="300" />
+          <Property Name="idConvocatoria" Type="int" />
+          <Property Name="FechaRegistro" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Schema">
+          <Key>
+            <PropertyRef Name="Version" />
+          </Key>
+          <Property Name="Version" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Server">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Data" Type="nvarchar(max)" />
+          <Property Name="LastHeartbeat" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Set">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Key" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Score" Type="float" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="ExpireAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+          <Property Name="Data" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TiposClientes">
+          <Key>
+            <PropertyRef Name="idTipoUsuario" />
+          </Key>
+          <Property Name="idTipoUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreTipo" Type="nvarchar" MaxLength="100" />
+          <Property Name="Slug" Type="nvarchar" MaxLength="100" />
+          <Property Name="Contenido" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_archivoDiplomado_catDiplomado">
+          <End Role="catDiplomado" Type="Self.catDiplomado" Multiplicity="1" />
+          <End Role="archivoDiplomado" Type="Self.archivoDiplomado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catDiplomado">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="archivoDiplomado">
+              <PropertyRef Name="idDiplomado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_catCondiciones_catConvocatoria">
+          <End Role="catConvocatoria" Type="Self.catConvocatoria" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="catCondiciones" Type="Self.catCondiciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catConvocatoria">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="catCondiciones">
+              <PropertyRef Name="idConvocatoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_catInformacion_catSeccion">
+          <End Role="catSeccion" Type="Self.catSeccion" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="catInformacion" Type="Self.catInformacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catSeccion">
+              <PropertyRef Name="idSeccion" />
+            </Principal>
+            <Dependent Role="catInformacion">
+              <PropertyRef Name="idSeccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_catMensajes_catDepartamento">
+          <End Role="catDepartamento" Type="Self.catDepartamento" Multiplicity="0..1" />
+          <End Role="catMensajes" Type="Self.catMensajes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catDepartamento">
+              <PropertyRef Name="idDepartamento" />
+            </Principal>
+            <Dependent Role="catMensajes">
+              <PropertyRef Name="idDepartamentoCanalizacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_catModulos_catTalleres">
+          <End Role="catTalleres" Type="Self.catTalleres" Multiplicity="0..1" />
+          <End Role="catModulos" Type="Self.catModulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catTalleres">
+              <PropertyRef Name="idTaller" />
+            </Principal>
+            <Dependent Role="catModulos">
+              <PropertyRef Name="idTaller" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_catRequisitos_catConvocatoria">
+          <End Role="catConvocatoria" Type="Self.catConvocatoria" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="catRequisitos" Type="Self.catRequisitos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catConvocatoria">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="catRequisitos">
+              <PropertyRef Name="idConvocatoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_catSeccion_TiposClientes">
+          <End Role="TiposClientes" Type="Self.TiposClientes" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="catSeccion" Type="Self.catSeccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposClientes">
+              <PropertyRef Name="idTipoUsuario" />
+            </Principal>
+            <Dependent Role="catSeccion">
+              <PropertyRef Name="idTipoCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_catSlider_catNoticia">
+          <End Role="catNoticia" Type="Self.catNoticia" Multiplicity="1" />
+          <End Role="catSlider" Type="Self.catSlider" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catNoticia">
+              <PropertyRef Name="idNoticia" />
+            </Principal>
+            <Dependent Role="catSlider">
+              <PropertyRef Name="idNoticia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_catTalleres_catExpositorExterno">
+          <End Role="catExpositorExterno" Type="Self.catExpositorExterno" Multiplicity="0..1" />
+          <End Role="catTalleres" Type="Self.catTalleres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catExpositorExterno">
+              <PropertyRef Name="idExpositor" />
+            </Principal>
+            <Dependent Role="catTalleres">
+              <PropertyRef Name="idExpositor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_catVuMotivos_catDepartamento">
+          <End Role="catDepartamento" Type="Self.catDepartamento" Multiplicity="0..1" />
+          <End Role="catVuMotivos" Type="Self.catVuMotivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catDepartamento">
+              <PropertyRef Name="idDepartamento" />
+            </Principal>
+            <Dependent Role="catVuMotivos">
+              <PropertyRef Name="idDepartamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comentario_Post">
+          <End Role="Post" Type="Self.Post" Multiplicity="0..1" />
+          <End Role="comentario" Type="Self.comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comentario">
+              <PropertyRef Name="idPost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_configuracionSitioDocumentos_ConfiguracionSitio">
+          <End Role="configuracionSitio" Type="Self.configuracionSitio" Multiplicity="0..1" />
+          <End Role="configuracionSitioDocumentos" Type="Self.configuracionSitioDocumentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="configuracionSitio">
+              <PropertyRef Name="idPagina" />
+            </Principal>
+            <Dependent Role="configuracionSitioDocumentos">
+              <PropertyRef Name="idSitio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_contactoConvocatoria_catConvocatoria">
+          <End Role="catConvocatoria" Type="Self.catConvocatoria" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="contactoConvocatoria" Type="Self.contactoConvocatoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catConvocatoria">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="contactoConvocatoria">
+              <PropertyRef Name="idConvocatoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_galeriaNoticias_catNoticia">
+          <End Role="catNoticia" Type="Self.catNoticia" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="galeriaNoticias" Type="Self.galeriaNoticias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catNoticia">
+              <PropertyRef Name="idNoticia" />
+            </Principal>
+            <Dependent Role="galeriaNoticias">
+              <PropertyRef Name="idNoticia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HangFire_JobParameter_Job">
+          <End Role="Job" Type="Self.Job" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="JobParameter" Type="Self.JobParameter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="JobParameter">
+              <PropertyRef Name="JobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HangFire_State_Job">
+          <End Role="Job" Type="Self.Job" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="State" Type="Self.State" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="State">
+              <PropertyRef Name="JobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Post_catCategoriasPost">
+          <End Role="catCategoriasPost" Type="Self.catCategoriasPost" Multiplicity="0..1" />
+          <End Role="Post" Type="Self.Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catCategoriasPost">
+              <PropertyRef Name="idCategoria" />
+            </Principal>
+            <Dependent Role="Post">
+              <PropertyRef Name="idCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registro_catConvocatoria">
+          <End Role="catConvocatoria" Type="Self.catConvocatoria" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Registro" Type="Self.Registro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catConvocatoria">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Registro">
+              <PropertyRef Name="idConvocatoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="bdCinotamVersionOTCModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="archivoDiplomado" EntityType="Self.archivoDiplomado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="catCategoriasPost" EntityType="Self.catCategoriasPost" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="catCondiciones" EntityType="Self.catCondiciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="catConvocatoria" EntityType="Self.catConvocatoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="catDepartamento" EntityType="Self.catDepartamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="catDiplomado" EntityType="Self.catDiplomado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="catEncuesta" EntityType="Self.catEncuesta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="catExpositorExterno" EntityType="Self.catExpositorExterno" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="catInformacion" EntityType="Self.catInformacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="catMensajes" EntityType="Self.catMensajes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="catModulos" EntityType="Self.catModulos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="catNoticia" EntityType="Self.catNoticia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="catProyecto" EntityType="Self.catProyecto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="catRequisitos" EntityType="Self.catRequisitos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="catSeccion" EntityType="Self.catSeccion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="catSlider" EntityType="Self.catSlider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="catTalleres" EntityType="Self.catTalleres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="catVuMotivos" EntityType="Self.catVuMotivos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="comentario" EntityType="Self.comentario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="configuracionSitio" EntityType="Self.configuracionSitio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="configuracionSitioDocumentos" EntityType="Self.configuracionSitioDocumentos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="contactoConvocatoria" EntityType="Self.contactoConvocatoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Counter" EntityType="Self.Counter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="datosUsuario" EntityType="Self.datosUsuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="galeriaNoticias" EntityType="Self.galeriaNoticias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hash" EntityType="Self.Hash" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Job" EntityType="Self.Job" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobParameter" EntityType="Self.JobParameter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobQueue" EntityType="Self.JobQueue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="List" EntityType="Self.List" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Permisos" EntityType="Self.Permisos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Registro" EntityType="Self.Registro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Schema" EntityType="Self.Schema" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Server" EntityType="Self.Server" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Set" EntityType="Self.Set" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TiposClientes" EntityType="Self.TiposClientes" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_archivoDiplomado_catDiplomado" Association="Self.FK_archivoDiplomado_catDiplomado">
+            <End Role="catDiplomado" EntitySet="catDiplomado" />
+            <End Role="archivoDiplomado" EntitySet="archivoDiplomado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_catCondiciones_catConvocatoria" Association="Self.FK_catCondiciones_catConvocatoria">
+            <End Role="catConvocatoria" EntitySet="catConvocatoria" />
+            <End Role="catCondiciones" EntitySet="catCondiciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_catInformacion_catSeccion" Association="Self.FK_catInformacion_catSeccion">
+            <End Role="catSeccion" EntitySet="catSeccion" />
+            <End Role="catInformacion" EntitySet="catInformacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_catMensajes_catDepartamento" Association="Self.FK_catMensajes_catDepartamento">
+            <End Role="catDepartamento" EntitySet="catDepartamento" />
+            <End Role="catMensajes" EntitySet="catMensajes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_catModulos_catTalleres" Association="Self.FK_catModulos_catTalleres">
+            <End Role="catTalleres" EntitySet="catTalleres" />
+            <End Role="catModulos" EntitySet="catModulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_catRequisitos_catConvocatoria" Association="Self.FK_catRequisitos_catConvocatoria">
+            <End Role="catConvocatoria" EntitySet="catConvocatoria" />
+            <End Role="catRequisitos" EntitySet="catRequisitos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_catSeccion_TiposClientes" Association="Self.FK_catSeccion_TiposClientes">
+            <End Role="TiposClientes" EntitySet="TiposClientes" />
+            <End Role="catSeccion" EntitySet="catSeccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_catSlider_catNoticia" Association="Self.FK_catSlider_catNoticia">
+            <End Role="catNoticia" EntitySet="catNoticia" />
+            <End Role="catSlider" EntitySet="catSlider" />
+          </AssociationSet>
+          <AssociationSet Name="FK_catTalleres_catExpositorExterno" Association="Self.FK_catTalleres_catExpositorExterno">
+            <End Role="catExpositorExterno" EntitySet="catExpositorExterno" />
+            <End Role="catTalleres" EntitySet="catTalleres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_catVuMotivos_catDepartamento" Association="Self.FK_catVuMotivos_catDepartamento">
+            <End Role="catDepartamento" EntitySet="catDepartamento" />
+            <End Role="catVuMotivos" EntitySet="catVuMotivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comentario_Post" Association="Self.FK_Comentario_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="comentario" EntitySet="comentario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_configuracionSitioDocumentos_ConfiguracionSitio" Association="Self.FK_configuracionSitioDocumentos_ConfiguracionSitio">
+            <End Role="configuracionSitio" EntitySet="configuracionSitio" />
+            <End Role="configuracionSitioDocumentos" EntitySet="configuracionSitioDocumentos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_contactoConvocatoria_catConvocatoria" Association="Self.FK_contactoConvocatoria_catConvocatoria">
+            <End Role="catConvocatoria" EntitySet="catConvocatoria" />
+            <End Role="contactoConvocatoria" EntitySet="contactoConvocatoria" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_galeriaNoticias_catNoticia" Association="Self.FK_galeriaNoticias_catNoticia">
+            <End Role="catNoticia" EntitySet="catNoticia" />
+            <End Role="galeriaNoticias" EntitySet="galeriaNoticias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HangFire_JobParameter_Job" Association="Self.FK_HangFire_JobParameter_Job">
+            <End Role="Job" EntitySet="Job" />
+            <End Role="JobParameter" EntitySet="JobParameter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HangFire_State_Job" Association="Self.FK_HangFire_State_Job">
+            <End Role="Job" EntitySet="Job" />
+            <End Role="State" EntitySet="State" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Post_catCategoriasPost" Association="Self.FK_Post_catCategoriasPost">
+            <End Role="catCategoriasPost" EntitySet="catCategoriasPost" />
+            <End Role="Post" EntitySet="Post" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registro_catConvocatoria" Association="Self.FK_Registro_catConvocatoria">
+            <End Role="catConvocatoria" EntitySet="catConvocatoria" />
+            <End Role="Registro" EntitySet="Registro" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="bdCinotamVersionOTCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="bdCinotamVersionOTCEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="bdCinotamVersionOTCModel.C__MigrationHistory" />
+          <EntitySet Name="archivoDiplomado" EntityType="bdCinotamVersionOTCModel.archivoDiplomado" />
+          <EntitySet Name="AspNetRoles" EntityType="bdCinotamVersionOTCModel.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="bdCinotamVersionOTCModel.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserLogins" EntityType="bdCinotamVersionOTCModel.AspNetUserLogins" />
+          <EntitySet Name="AspNetUsers" EntityType="bdCinotamVersionOTCModel.AspNetUsers" />
+          <EntitySet Name="catCategoriasPost" EntityType="bdCinotamVersionOTCModel.catCategoriasPost" />
+          <EntitySet Name="catCondiciones" EntityType="bdCinotamVersionOTCModel.catCondiciones" />
+          <EntitySet Name="catConvocatoria" EntityType="bdCinotamVersionOTCModel.catConvocatoria" />
+          <EntitySet Name="catDepartamento" EntityType="bdCinotamVersionOTCModel.catDepartamento" />
+          <EntitySet Name="catDiplomado" EntityType="bdCinotamVersionOTCModel.catDiplomado" />
+          <EntitySet Name="catEncuesta" EntityType="bdCinotamVersionOTCModel.catEncuesta" />
+          <EntitySet Name="catExpositorExterno" EntityType="bdCinotamVersionOTCModel.catExpositorExterno" />
+          <EntitySet Name="catInformacion" EntityType="bdCinotamVersionOTCModel.catInformacion" />
+          <EntitySet Name="catMensajes" EntityType="bdCinotamVersionOTCModel.catMensajes" />
+          <EntitySet Name="catModulos" EntityType="bdCinotamVersionOTCModel.catModulos" />
+          <EntitySet Name="catNoticia" EntityType="bdCinotamVersionOTCModel.catNoticia" />
+          <EntitySet Name="catProyecto" EntityType="bdCinotamVersionOTCModel.catProyecto" />
+          <EntitySet Name="catRequisitos" EntityType="bdCinotamVersionOTCModel.catRequisitos" />
+          <EntitySet Name="catSeccion" EntityType="bdCinotamVersionOTCModel.catSeccion" />
+          <EntitySet Name="catSlider" EntityType="bdCinotamVersionOTCModel.catSlider" />
+          <EntitySet Name="catTalleres" EntityType="bdCinotamVersionOTCModel.catTalleres" />
+          <EntitySet Name="catVuMotivos" EntityType="bdCinotamVersionOTCModel.catVuMotivos" />
+          <EntitySet Name="comentario" EntityType="bdCinotamVersionOTCModel.comentario" />
+          <EntitySet Name="configuracionSitio" EntityType="bdCinotamVersionOTCModel.configuracionSitio" />
+          <EntitySet Name="configuracionSitioDocumentos" EntityType="bdCinotamVersionOTCModel.configuracionSitioDocumentos" />
+          <EntitySet Name="contactoConvocatoria" EntityType="bdCinotamVersionOTCModel.contactoConvocatoria" />
+          <EntitySet Name="Counter" EntityType="bdCinotamVersionOTCModel.Counter" />
+          <EntitySet Name="datosUsuario" EntityType="bdCinotamVersionOTCModel.datosUsuario" />
+          <EntitySet Name="galeriaNoticias" EntityType="bdCinotamVersionOTCModel.galeriaNoticias" />
+          <EntitySet Name="Hash" EntityType="bdCinotamVersionOTCModel.Hash" />
+          <EntitySet Name="Job" EntityType="bdCinotamVersionOTCModel.Job" />
+          <EntitySet Name="JobParameter" EntityType="bdCinotamVersionOTCModel.JobParameter" />
+          <EntitySet Name="JobQueue" EntityType="bdCinotamVersionOTCModel.JobQueue" />
+          <EntitySet Name="List" EntityType="bdCinotamVersionOTCModel.List" />
+          <EntitySet Name="Permisos" EntityType="bdCinotamVersionOTCModel.Permisos" />
+          <EntitySet Name="Post" EntityType="bdCinotamVersionOTCModel.Post" />
+          <EntitySet Name="Registro" EntityType="bdCinotamVersionOTCModel.Registro" />
+          <EntitySet Name="Schema" EntityType="bdCinotamVersionOTCModel.Schema" />
+          <EntitySet Name="Server" EntityType="bdCinotamVersionOTCModel.Server" />
+          <EntitySet Name="Set" EntityType="bdCinotamVersionOTCModel.Set" />
+          <EntitySet Name="State" EntityType="bdCinotamVersionOTCModel.State" />
+          <EntitySet Name="sysdiagrams" EntityType="bdCinotamVersionOTCModel.sysdiagrams" />
+          <EntitySet Name="TiposClientes" EntityType="bdCinotamVersionOTCModel.TiposClientes" />
+          <AssociationSet Name="FK_archivoDiplomado_catDiplomado" Association="bdCinotamVersionOTCModel.FK_archivoDiplomado_catDiplomado">
+            <End Role="catDiplomado" EntitySet="catDiplomado" />
+            <End Role="archivoDiplomado" EntitySet="archivoDiplomado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="bdCinotamVersionOTCModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="bdCinotamVersionOTCModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Post_catCategoriasPost" Association="bdCinotamVersionOTCModel.FK_Post_catCategoriasPost">
+            <End Role="catCategoriasPost" EntitySet="catCategoriasPost" />
+            <End Role="Post" EntitySet="Post" />
+          </AssociationSet>
+          <AssociationSet Name="FK_catCondiciones_catConvocatoria" Association="bdCinotamVersionOTCModel.FK_catCondiciones_catConvocatoria">
+            <End Role="catConvocatoria" EntitySet="catConvocatoria" />
+            <End Role="catCondiciones" EntitySet="catCondiciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_catRequisitos_catConvocatoria" Association="bdCinotamVersionOTCModel.FK_catRequisitos_catConvocatoria">
+            <End Role="catConvocatoria" EntitySet="catConvocatoria" />
+            <End Role="catRequisitos" EntitySet="catRequisitos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_contactoConvocatoria_catConvocatoria" Association="bdCinotamVersionOTCModel.FK_contactoConvocatoria_catConvocatoria">
+            <End Role="catConvocatoria" EntitySet="catConvocatoria" />
+            <End Role="contactoConvocatoria" EntitySet="contactoConvocatoria" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registro_catConvocatoria" Association="bdCinotamVersionOTCModel.FK_Registro_catConvocatoria">
+            <End Role="catConvocatoria" EntitySet="catConvocatoria" />
+            <End Role="Registro" EntitySet="Registro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_catMensajes_catDepartamento" Association="bdCinotamVersionOTCModel.FK_catMensajes_catDepartamento">
+            <End Role="catDepartamento" EntitySet="catDepartamento" />
+            <End Role="catMensajes" EntitySet="catMensajes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_catVuMotivos_catDepartamento" Association="bdCinotamVersionOTCModel.FK_catVuMotivos_catDepartamento">
+            <End Role="catDepartamento" EntitySet="catDepartamento" />
+            <End Role="catVuMotivos" EntitySet="catVuMotivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_catTalleres_catExpositorExterno" Association="bdCinotamVersionOTCModel.FK_catTalleres_catExpositorExterno">
+            <End Role="catExpositorExterno" EntitySet="catExpositorExterno" />
+            <End Role="catTalleres" EntitySet="catTalleres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_catInformacion_catSeccion" Association="bdCinotamVersionOTCModel.FK_catInformacion_catSeccion">
+            <End Role="catSeccion" EntitySet="catSeccion" />
+            <End Role="catInformacion" EntitySet="catInformacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_catModulos_catTalleres" Association="bdCinotamVersionOTCModel.FK_catModulos_catTalleres">
+            <End Role="catTalleres" EntitySet="catTalleres" />
+            <End Role="catModulos" EntitySet="catModulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_catSlider_catNoticia" Association="bdCinotamVersionOTCModel.FK_catSlider_catNoticia">
+            <End Role="catNoticia" EntitySet="catNoticia" />
+            <End Role="catSlider" EntitySet="catSlider" />
+          </AssociationSet>
+          <AssociationSet Name="FK_galeriaNoticias_catNoticia" Association="bdCinotamVersionOTCModel.FK_galeriaNoticias_catNoticia">
+            <End Role="catNoticia" EntitySet="catNoticia" />
+            <End Role="galeriaNoticias" EntitySet="galeriaNoticias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_catSeccion_TiposClientes" Association="bdCinotamVersionOTCModel.FK_catSeccion_TiposClientes">
+            <End Role="TiposClientes" EntitySet="TiposClientes" />
+            <End Role="catSeccion" EntitySet="catSeccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comentario_Post" Association="bdCinotamVersionOTCModel.FK_Comentario_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="comentario" EntitySet="comentario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_configuracionSitioDocumentos_ConfiguracionSitio" Association="bdCinotamVersionOTCModel.FK_configuracionSitioDocumentos_ConfiguracionSitio">
+            <End Role="configuracionSitio" EntitySet="configuracionSitio" />
+            <End Role="configuracionSitioDocumentos" EntitySet="configuracionSitioDocumentos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HangFire_JobParameter_Job" Association="bdCinotamVersionOTCModel.FK_HangFire_JobParameter_Job">
+            <End Role="Job" EntitySet="Job" />
+            <End Role="JobParameter" EntitySet="JobParameter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HangFire_State_Job" Association="bdCinotamVersionOTCModel.FK_HangFire_State_Job">
+            <End Role="Job" EntitySet="Job" />
+            <End Role="State" EntitySet="State" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="bdCinotamVersionOTCModel.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="archivoDiplomado">
+          <Key>
+            <PropertyRef Name="idArchivo" />
+          </Key>
+          <Property Name="idArchivo" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="DescripciónArchivo" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Archivo" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="MaxDescargas" Type="Int32" />
+          <Property Name="idDiplomado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="catDiplomado" Relationship="bdCinotamVersionOTCModel.FK_archivoDiplomado_catDiplomado" FromRole="archivoDiplomado" ToRole="catDiplomado" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="bdCinotamVersionOTCModel.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="bdCinotamVersionOTCModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="bdCinotamVersionOTCModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="bdCinotamVersionOTCModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="bdCinotamVersionOTCModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="bdCinotamVersionOTCModel.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="catCategoriasPost">
+          <Key>
+            <PropertyRef Name="idCategoria" />
+          </Key>
+          <Property Name="idCategoria" Type="Int32" Nullable="false" />
+          <Property Name="Descripción" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Post" Relationship="bdCinotamVersionOTCModel.FK_Post_catCategoriasPost" FromRole="catCategoriasPost" ToRole="Post" />
+        </EntityType>
+        <EntityType Name="catCondiciones">
+          <Key>
+            <PropertyRef Name="idCondicion" />
+          </Key>
+          <Property Name="idCondicion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreCondicion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DescripcionCondicion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="idConvocatoria" Type="Int32" />
+          <NavigationProperty Name="catConvocatoria" Relationship="bdCinotamVersionOTCModel.FK_catCondiciones_catConvocatoria" FromRole="catCondiciones" ToRole="catConvocatoria" />
+        </EntityType>
+        <EntityType Name="catConvocatoria">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TituloConvocatoria" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DescripcionConvocatoria" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FinanciamientoConvocatoria" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="idAutor" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ObjetivoConvocatoria" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FechaInicio" Type="DateTime" Precision="3" />
+          <Property Name="FechaFin" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="catCondiciones" Relationship="bdCinotamVersionOTCModel.FK_catCondiciones_catConvocatoria" FromRole="catConvocatoria" ToRole="catCondiciones" />
+          <NavigationProperty Name="catRequisitos" Relationship="bdCinotamVersionOTCModel.FK_catRequisitos_catConvocatoria" FromRole="catConvocatoria" ToRole="catRequisitos" />
+          <NavigationProperty Name="contactoConvocatoria" Relationship="bdCinotamVersionOTCModel.FK_contactoConvocatoria_catConvocatoria" FromRole="catConvocatoria" ToRole="contactoConvocatoria" />
+          <NavigationProperty Name="Registro" Relationship="bdCinotamVersionOTCModel.FK_Registro_catConvocatoria" FromRole="catConvocatoria" ToRole="Registro" />
+        </EntityType>
+        <EntityType Name="catDepartamento">
+          <Key>
+            <PropertyRef Name="idDepartamento" />
+          </Key>
+          <Property Name="idDepartamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nomDepartamento" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ResponsableId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Proposito" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="nivel" Type="Int32" />
+          <NavigationProperty Name="catMensajes" Relationship="bdCinotamVersionOTCModel.FK_catMensajes_catDepartamento" FromRole="catDepartamento" ToRole="catMensajes" />
+          <NavigationProperty Name="catVuMotivos" Relationship="bdCinotamVersionOTCModel.FK_catVuMotivos_catDepartamento" FromRole="catDepartamento" ToRole="catVuMotivos" />
+        </EntityType>
+        <EntityType Name="catDiplomado">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TituloDiplomado" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DescripcionDiplomado" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FechaInicio" Type="DateTime" Precision="3" />
+          <Property Name="FechaFin" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="archivoDiplomado" Relationship="bdCinotamVersionOTCModel.FK_archivoDiplomado_catDiplomado" FromRole="catDiplomado" ToRole="archivoDiplomado" />
+        </EntityType>
+        <EntityType Name="catEncuesta">
+          <Key>
+            <PropertyRef Name="idEncuesta" />
+          </Key>
+          <Property Name="idEncuesta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fechaEncuesta" Type="DateTime" Precision="3" />
+          <Property Name="fechaEncuestaFin" Type="DateTime" Precision="3" />
+          <Property Name="descripciónEncuesta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="idAutorEncuesta" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="Boolean" />
+          <Property Name="Clicks" Type="Int32" />
+          <Property Name="UrlEncuesta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="tituloEncuesta" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="catExpositorExterno">
+          <Key>
+            <PropertyRef Name="idExpositor" />
+          </Key>
+          <Property Name="idExpositor" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="trat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="ApPaterno" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="ApMaterno" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="catTalleres" Relationship="bdCinotamVersionOTCModel.FK_catTalleres_catExpositorExterno" FromRole="catExpositorExterno" ToRole="catTalleres" />
+        </EntityType>
+        <EntityType Name="catInformacion">
+          <Key>
+            <PropertyRef Name="idDocumento" />
+          </Key>
+          <Property Name="idDocumento" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="archivo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="idSeccion" Type="Int32" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="tipoArchivo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="tamañoArchivo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="descripcionCorta" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="catSeccion" Relationship="bdCinotamVersionOTCModel.FK_catInformacion_catSeccion" FromRole="catInformacion" ToRole="catSeccion" />
+        </EntityType>
+        <EntityType Name="catMensajes">
+          <Key>
+            <PropertyRef Name="idCorreo" />
+          </Key>
+          <Property Name="idCorreo" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ApPaterno" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ApMaterno" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="InistitucionNombre" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Departamento" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mensaje" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FechaEntrada" Type="DateTime" Precision="3" />
+          <Property Name="idDepartamentoCanalizacion" Type="Int32" />
+          <NavigationProperty Name="catDepartamento" Relationship="bdCinotamVersionOTCModel.FK_catMensajes_catDepartamento" FromRole="catMensajes" ToRole="catDepartamento" />
+        </EntityType>
+        <EntityType Name="catModulos">
+          <Key>
+            <PropertyRef Name="idModulo" />
+          </Key>
+          <Property Name="idModulo" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="orden" Type="Int32" />
+          <Property Name="idTaller" Type="Int32" />
+          <NavigationProperty Name="catTalleres" Relationship="bdCinotamVersionOTCModel.FK_catModulos_catTalleres" FromRole="catModulos" ToRole="catTalleres" />
+        </EntityType>
+        <EntityType Name="catNoticia">
+          <Key>
+            <PropertyRef Name="idNoticia" />
+          </Key>
+          <Property Name="idNoticia" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="NoticiaTitulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NoticiaTexto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NoticiaImagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NoticiaFecha" Type="DateTime" Precision="3" />
+          <Property Name="Estado" Type="Boolean" />
+          <Property Name="autorId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="revisorId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="urlSlug" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HabilitarComentarios" Type="Boolean" />
+          <NavigationProperty Name="catSlider" Relationship="bdCinotamVersionOTCModel.FK_catSlider_catNoticia" FromRole="catNoticia" ToRole="catSlider" />
+          <NavigationProperty Name="galeriaNoticias" Relationship="bdCinotamVersionOTCModel.FK_galeriaNoticias_catNoticia" FromRole="catNoticia" ToRole="galeriaNoticias" />
+        </EntityType>
+        <EntityType Name="catProyecto">
+          <Key>
+            <PropertyRef Name="idProyecto" />
+          </Key>
+          <Property Name="idProyecto" Type="Int32" Nullable="false" />
+          <Property Name="ProyectoTitulo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ProyectoDescripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProyectoUrlSlug" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ProyectoArchivo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="autorId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProyectoFecha" Type="DateTime" Precision="3" />
+          <Property Name="ProyectoEstado" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="catRequisitos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DescripcionRequisito" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ArchivoRequisito" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="idConvocatoria" Type="Int32" />
+          <NavigationProperty Name="catConvocatoria" Relationship="bdCinotamVersionOTCModel.FK_catRequisitos_catConvocatoria" FromRole="catRequisitos" ToRole="catConvocatoria" />
+        </EntityType>
+        <EntityType Name="catSeccion">
+          <Key>
+            <PropertyRef Name="idSeccion" />
+          </Key>
+          <Property Name="idSeccion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SeccionNombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="tipoSeccion" Type="Int32" />
+          <Property Name="idCreador" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="idTipoCliente" Type="Int32" />
+          <NavigationProperty Name="catInformacion" Relationship="bdCinotamVersionOTCModel.FK_catInformacion_catSeccion" FromRole="catSeccion" ToRole="catInformacion" />
+          <NavigationProperty Name="TiposClientes" Relationship="bdCinotamVersionOTCModel.FK_catSeccion_TiposClientes" FromRole="catSeccion" ToRole="TiposClientes" />
+        </EntityType>
+        <EntityType Name="catSlider">
+          <Key>
+            <PropertyRef Name="idSlider" />
+          </Key>
+          <Property Name="SliderDescripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="SliderImagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SliderUrlSlug" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Prioridad" Type="Int32" />
+          <Property Name="SliderInicio" Type="DateTime" Precision="3" />
+          <Property Name="SliderFin" Type="DateTime" Precision="3" />
+          <Property Name="Destino" Type="Int32" />
+          <Property Name="idNoticia" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="idSlider" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="catNoticia" Relationship="bdCinotamVersionOTCModel.FK_catSlider_catNoticia" FromRole="catSlider" ToRole="catNoticia" />
+        </EntityType>
+        <EntityType Name="catTalleres">
+          <Key>
+            <PropertyRef Name="idTaller" />
+          </Key>
+          <Property Name="idTaller" Type="Int32" Nullable="false" />
+          <Property Name="idExpositor" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Objetivo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DirigidoA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LogroTaller" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Duracion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Cupo" Type="Int32" />
+          <Property Name="Imagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Costo" Type="Single" />
+          <Property Name="incluye" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="catExpositorExterno" Relationship="bdCinotamVersionOTCModel.FK_catTalleres_catExpositorExterno" FromRole="catTalleres" ToRole="catExpositorExterno" />
+          <NavigationProperty Name="catModulos" Relationship="bdCinotamVersionOTCModel.FK_catModulos_catTalleres" FromRole="catTalleres" ToRole="catModulos" />
+        </EntityType>
+        <EntityType Name="catVuMotivos">
+          <Key>
+            <PropertyRef Name="idMotivo" />
+          </Key>
+          <Property Name="idMotivo" Type="Int32" Nullable="false" />
+          <Property Name="idDepartamento" Type="Int32" />
+          <Property Name="descMotivo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="catDepartamento" Relationship="bdCinotamVersionOTCModel.FK_catVuMotivos_catDepartamento" FromRole="catVuMotivos" ToRole="catDepartamento" />
+        </EntityType>
+        <EntityType Name="comentario">
+          <Key>
+            <PropertyRef Name="idComentario" />
+          </Key>
+          <Property Name="idComentario" Type="Int32" Nullable="false" />
+          <Property Name="contenido" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="estado" Type="Boolean" />
+          <Property Name="fechaCreacion" Type="DateTime" Precision="3" />
+          <Property Name="autor" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="idPost" Type="Int32" />
+          <NavigationProperty Name="Post" Relationship="bdCinotamVersionOTCModel.FK_Comentario_Post" FromRole="comentario" ToRole="Post" />
+        </EntityType>
+        <EntityType Name="configuracionSitio">
+          <Key>
+            <PropertyRef Name="idPagina" />
+          </Key>
+          <Property Name="idPagina" Type="Int32" Nullable="false" />
+          <Property Name="NombreSitioLargo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NombreSitioCorto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="antecedentes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="misionvision" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ubicacion" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+          <Property Name="imagenFrontal" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="imagenOrganigrama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SitioDisponible" Type="Boolean" />
+          <Property Name="ContactoLinea1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ContactoLinea2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ContactoLinea3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Extencion" Type="Int32" />
+          <Property Name="NombreConfiguracion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="configuracionSitioDocumentos" Relationship="bdCinotamVersionOTCModel.FK_configuracionSitioDocumentos_ConfiguracionSitio" FromRole="configuracionSitio" ToRole="configuracionSitioDocumentos" />
+        </EntityType>
+        <EntityType Name="configuracionSitioDocumentos">
+          <Key>
+            <PropertyRef Name="idDoc" />
+          </Key>
+          <Property Name="idDoc" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="urlArchivo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="idSitio" Type="Int32" />
+          <NavigationProperty Name="configuracionSitio" Relationship="bdCinotamVersionOTCModel.FK_configuracionSitioDocumentos_ConfiguracionSitio" FromRole="configuracionSitioDocumentos" ToRole="configuracionSitio" />
+        </EntityType>
+        <EntityType Name="contactoConvocatoria">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Empresa" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="NombreContacto" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CorreoElectronico" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Celular" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Sitio" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="idConvocatoria" Type="Int32" />
+          <NavigationProperty Name="catConvocatoria" Relationship="bdCinotamVersionOTCModel.FK_contactoConvocatoria_catConvocatoria" FromRole="contactoConvocatoria" ToRole="catConvocatoria" />
+        </EntityType>
+        <EntityType Name="Counter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Key" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="Int16" Nullable="false" />
+          <Property Name="ExpireAt" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="datosUsuario">
+          <Key>
+            <PropertyRef Name="noEmpleado" />
+          </Key>
+          <Property Name="noEmpleado" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ApPaterno" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ApMaterno" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="imagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="idAsp" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="galeriaNoticias">
+          <Key>
+            <PropertyRef Name="idImagen" />
+          </Key>
+          <Property Name="idImagen" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="idNoticia" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="rutaArchivo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="rutaThumbnail" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="catNoticia" Relationship="bdCinotamVersionOTCModel.FK_galeriaNoticias_catNoticia" FromRole="galeriaNoticias" ToRole="catNoticia" />
+        </EntityType>
+        <EntityType Name="Hash">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Key" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Field" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ExpireAt" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Job">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateId" Type="Int32" />
+          <Property Name="StateName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="InvocationData" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Arguments" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ExpireAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="JobParameter" Relationship="bdCinotamVersionOTCModel.FK_HangFire_JobParameter_Job" FromRole="Job" ToRole="JobParameter" />
+          <NavigationProperty Name="State" Relationship="bdCinotamVersionOTCModel.FK_HangFire_State_Job" FromRole="Job" ToRole="State" />
+        </EntityType>
+        <EntityType Name="JobParameter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Job" Relationship="bdCinotamVersionOTCModel.FK_HangFire_JobParameter_Job" FromRole="JobParameter" ToRole="Job" />
+        </EntityType>
+        <EntityType Name="JobQueue">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobId" Type="Int32" Nullable="false" />
+          <Property Name="Queue" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="FetchedAt" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="List">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Key" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ExpireAt" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Permisos">
+          <Key>
+            <PropertyRef Name="idPermiso" />
+          </Key>
+          <Property Name="idPermiso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idEmpleado" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="horaSalida" Type="DateTime" Precision="3" />
+          <Property Name="horaRegreso" Type="DateTime" Precision="3" />
+          <Property Name="idAdministrador" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="razon" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="autorizado" Type="Boolean" />
+          <Property Name="observaciones" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ipPeticion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fechaRegistro" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="blogTitulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="blogContenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="tags" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="estado" Type="Boolean" />
+          <Property Name="fechaCreacion" Type="DateTime" Precision="3" />
+          <Property Name="fechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="idAutor" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="idCategoria" Type="Int32" />
+          <Property Name="urlSlug" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="catCategoriasPost" Relationship="bdCinotamVersionOTCModel.FK_Post_catCategoriasPost" FromRole="Post" ToRole="catCategoriasPost" />
+          <NavigationProperty Name="comentario" Relationship="bdCinotamVersionOTCModel.FK_Comentario_Post" FromRole="Post" ToRole="comentario" />
+        </EntityType>
+        <EntityType Name="Registro">
+          <Key>
+            <PropertyRef Name="FolioRegistro" />
+          </Key>
+          <Property Name="FolioRegistro" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="NombreCompleto" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="RazonSocial" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Localidad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DescripcionEmpresa" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="idConvocatoria" Type="Int32" />
+          <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="catConvocatoria" Relationship="bdCinotamVersionOTCModel.FK_Registro_catConvocatoria" FromRole="Registro" ToRole="catConvocatoria" />
+        </EntityType>
+        <EntityType Name="Schema">
+          <Key>
+            <PropertyRef Name="Version" />
+          </Key>
+          <Property Name="Version" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Server">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Data" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastHeartbeat" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Set">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Key" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Score" Type="Double" Nullable="false" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="ExpireAt" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Reason" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Data" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Job" Relationship="bdCinotamVersionOTCModel.FK_HangFire_State_Job" FromRole="State" ToRole="Job" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TiposClientes">
+          <Key>
+            <PropertyRef Name="idTipoUsuario" />
+          </Key>
+          <Property Name="idTipoUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreTipo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Slug" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="catSeccion" Relationship="bdCinotamVersionOTCModel.FK_catSeccion_TiposClientes" FromRole="TiposClientes" ToRole="catSeccion" />
+        </EntityType>
+        <Association Name="FK_archivoDiplomado_catDiplomado">
+          <End Type="bdCinotamVersionOTCModel.catDiplomado" Role="catDiplomado" Multiplicity="1" />
+          <End Type="bdCinotamVersionOTCModel.archivoDiplomado" Role="archivoDiplomado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catDiplomado">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="archivoDiplomado">
+              <PropertyRef Name="idDiplomado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Type="bdCinotamVersionOTCModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdCinotamVersionOTCModel.AspNetUserClaims" Role="AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Type="bdCinotamVersionOTCModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdCinotamVersionOTCModel.AspNetUserLogins" Role="AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Post_catCategoriasPost">
+          <End Type="bdCinotamVersionOTCModel.catCategoriasPost" Role="catCategoriasPost" Multiplicity="0..1" />
+          <End Type="bdCinotamVersionOTCModel.Post" Role="Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catCategoriasPost">
+              <PropertyRef Name="idCategoria" />
+            </Principal>
+            <Dependent Role="Post">
+              <PropertyRef Name="idCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_catCondiciones_catConvocatoria">
+          <End Type="bdCinotamVersionOTCModel.catConvocatoria" Role="catConvocatoria" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdCinotamVersionOTCModel.catCondiciones" Role="catCondiciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catConvocatoria">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="catCondiciones">
+              <PropertyRef Name="idConvocatoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_catRequisitos_catConvocatoria">
+          <End Type="bdCinotamVersionOTCModel.catConvocatoria" Role="catConvocatoria" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdCinotamVersionOTCModel.catRequisitos" Role="catRequisitos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catConvocatoria">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="catRequisitos">
+              <PropertyRef Name="idConvocatoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_contactoConvocatoria_catConvocatoria">
+          <End Type="bdCinotamVersionOTCModel.catConvocatoria" Role="catConvocatoria" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdCinotamVersionOTCModel.contactoConvocatoria" Role="contactoConvocatoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catConvocatoria">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="contactoConvocatoria">
+              <PropertyRef Name="idConvocatoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registro_catConvocatoria">
+          <End Type="bdCinotamVersionOTCModel.catConvocatoria" Role="catConvocatoria" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdCinotamVersionOTCModel.Registro" Role="Registro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catConvocatoria">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Registro">
+              <PropertyRef Name="idConvocatoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_catMensajes_catDepartamento">
+          <End Type="bdCinotamVersionOTCModel.catDepartamento" Role="catDepartamento" Multiplicity="0..1" />
+          <End Type="bdCinotamVersionOTCModel.catMensajes" Role="catMensajes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catDepartamento">
+              <PropertyRef Name="idDepartamento" />
+            </Principal>
+            <Dependent Role="catMensajes">
+              <PropertyRef Name="idDepartamentoCanalizacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_catVuMotivos_catDepartamento">
+          <End Type="bdCinotamVersionOTCModel.catDepartamento" Role="catDepartamento" Multiplicity="0..1" />
+          <End Type="bdCinotamVersionOTCModel.catVuMotivos" Role="catVuMotivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catDepartamento">
+              <PropertyRef Name="idDepartamento" />
+            </Principal>
+            <Dependent Role="catVuMotivos">
+              <PropertyRef Name="idDepartamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_catTalleres_catExpositorExterno">
+          <End Type="bdCinotamVersionOTCModel.catExpositorExterno" Role="catExpositorExterno" Multiplicity="0..1" />
+          <End Type="bdCinotamVersionOTCModel.catTalleres" Role="catTalleres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catExpositorExterno">
+              <PropertyRef Name="idExpositor" />
+            </Principal>
+            <Dependent Role="catTalleres">
+              <PropertyRef Name="idExpositor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_catInformacion_catSeccion">
+          <End Type="bdCinotamVersionOTCModel.catSeccion" Role="catSeccion" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdCinotamVersionOTCModel.catInformacion" Role="catInformacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catSeccion">
+              <PropertyRef Name="idSeccion" />
+            </Principal>
+            <Dependent Role="catInformacion">
+              <PropertyRef Name="idSeccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_catModulos_catTalleres">
+          <End Type="bdCinotamVersionOTCModel.catTalleres" Role="catTalleres" Multiplicity="0..1" />
+          <End Type="bdCinotamVersionOTCModel.catModulos" Role="catModulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catTalleres">
+              <PropertyRef Name="idTaller" />
+            </Principal>
+            <Dependent Role="catModulos">
+              <PropertyRef Name="idTaller" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_catSlider_catNoticia">
+          <End Type="bdCinotamVersionOTCModel.catNoticia" Role="catNoticia" Multiplicity="1" />
+          <End Type="bdCinotamVersionOTCModel.catSlider" Role="catSlider" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catNoticia">
+              <PropertyRef Name="idNoticia" />
+            </Principal>
+            <Dependent Role="catSlider">
+              <PropertyRef Name="idNoticia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_galeriaNoticias_catNoticia">
+          <End Type="bdCinotamVersionOTCModel.catNoticia" Role="catNoticia" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdCinotamVersionOTCModel.galeriaNoticias" Role="galeriaNoticias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catNoticia">
+              <PropertyRef Name="idNoticia" />
+            </Principal>
+            <Dependent Role="galeriaNoticias">
+              <PropertyRef Name="idNoticia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_catSeccion_TiposClientes">
+          <End Type="bdCinotamVersionOTCModel.TiposClientes" Role="TiposClientes" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdCinotamVersionOTCModel.catSeccion" Role="catSeccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposClientes">
+              <PropertyRef Name="idTipoUsuario" />
+            </Principal>
+            <Dependent Role="catSeccion">
+              <PropertyRef Name="idTipoCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comentario_Post">
+          <End Type="bdCinotamVersionOTCModel.Post" Role="Post" Multiplicity="0..1" />
+          <End Type="bdCinotamVersionOTCModel.comentario" Role="comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comentario">
+              <PropertyRef Name="idPost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_configuracionSitioDocumentos_ConfiguracionSitio">
+          <End Type="bdCinotamVersionOTCModel.configuracionSitio" Role="configuracionSitio" Multiplicity="0..1" />
+          <End Type="bdCinotamVersionOTCModel.configuracionSitioDocumentos" Role="configuracionSitioDocumentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="configuracionSitio">
+              <PropertyRef Name="idPagina" />
+            </Principal>
+            <Dependent Role="configuracionSitioDocumentos">
+              <PropertyRef Name="idSitio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HangFire_JobParameter_Job">
+          <End Type="bdCinotamVersionOTCModel.Job" Role="Job" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdCinotamVersionOTCModel.JobParameter" Role="JobParameter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="JobParameter">
+              <PropertyRef Name="JobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HangFire_State_Job">
+          <End Type="bdCinotamVersionOTCModel.Job" Role="Job" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdCinotamVersionOTCModel.State" Role="State" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="State">
+              <PropertyRef Name="JobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Type="bdCinotamVersionOTCModel.AspNetRoles" Role="AspNetRoles" Multiplicity="*" />
+          <End Type="bdCinotamVersionOTCModel.AspNetUsers" Role="AspNetUsers" Multiplicity="*" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="bdCinotamVersionOTCModelStoreContainer" CdmEntityContainer="bdCinotamVersionOTCEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="archivoDiplomado">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.archivoDiplomado">
+              <MappingFragment StoreEntitySet="archivoDiplomado">
+                <ScalarProperty Name="idDiplomado" ColumnName="idDiplomado" />
+                <ScalarProperty Name="MaxDescargas" ColumnName="MaxDescargas" />
+                <ScalarProperty Name="Archivo" ColumnName="Archivo" />
+                <ScalarProperty Name="DescripciónArchivo" ColumnName="DescripciónArchivo" />
+                <ScalarProperty Name="idArchivo" ColumnName="idArchivo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.AspNetUserClaims">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.AspNetUserLogins">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="catCategoriasPost">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.catCategoriasPost">
+              <MappingFragment StoreEntitySet="catCategoriasPost">
+                <ScalarProperty Name="Descripción" ColumnName="Descripción" />
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="catCondiciones">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.catCondiciones">
+              <MappingFragment StoreEntitySet="catCondiciones">
+                <ScalarProperty Name="idConvocatoria" ColumnName="idConvocatoria" />
+                <ScalarProperty Name="DescripcionCondicion" ColumnName="DescripcionCondicion" />
+                <ScalarProperty Name="NombreCondicion" ColumnName="NombreCondicion" />
+                <ScalarProperty Name="idCondicion" ColumnName="idCondicion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="catConvocatoria">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.catConvocatoria">
+              <MappingFragment StoreEntitySet="catConvocatoria">
+                <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="ObjetivoConvocatoria" ColumnName="ObjetivoConvocatoria" />
+                <ScalarProperty Name="idAutor" ColumnName="idAutor" />
+                <ScalarProperty Name="FinanciamientoConvocatoria" ColumnName="FinanciamientoConvocatoria" />
+                <ScalarProperty Name="DescripcionConvocatoria" ColumnName="DescripcionConvocatoria" />
+                <ScalarProperty Name="TituloConvocatoria" ColumnName="TituloConvocatoria" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="catDepartamento">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.catDepartamento">
+              <MappingFragment StoreEntitySet="catDepartamento">
+                <ScalarProperty Name="nivel" ColumnName="nivel" />
+                <ScalarProperty Name="Proposito" ColumnName="Proposito" />
+                <ScalarProperty Name="ResponsableId" ColumnName="ResponsableId" />
+                <ScalarProperty Name="nomDepartamento" ColumnName="nomDepartamento" />
+                <ScalarProperty Name="idDepartamento" ColumnName="idDepartamento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="catDiplomado">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.catDiplomado">
+              <MappingFragment StoreEntitySet="catDiplomado">
+                <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="DescripcionDiplomado" ColumnName="DescripcionDiplomado" />
+                <ScalarProperty Name="TituloDiplomado" ColumnName="TituloDiplomado" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="catEncuesta">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.catEncuesta">
+              <MappingFragment StoreEntitySet="catEncuesta">
+                <ScalarProperty Name="tituloEncuesta" ColumnName="tituloEncuesta" />
+                <ScalarProperty Name="UrlEncuesta" ColumnName="UrlEncuesta" />
+                <ScalarProperty Name="Clicks" ColumnName="Clicks" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="idAutorEncuesta" ColumnName="idAutorEncuesta" />
+                <ScalarProperty Name="descripciónEncuesta" ColumnName="descripciónEncuesta" />
+                <ScalarProperty Name="fechaEncuestaFin" ColumnName="fechaEncuestaFin" />
+                <ScalarProperty Name="fechaEncuesta" ColumnName="fechaEncuesta" />
+                <ScalarProperty Name="idEncuesta" ColumnName="idEncuesta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="catExpositorExterno">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.catExpositorExterno">
+              <MappingFragment StoreEntitySet="catExpositorExterno">
+                <ScalarProperty Name="ApMaterno" ColumnName="ApMaterno" />
+                <ScalarProperty Name="ApPaterno" ColumnName="ApPaterno" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="trat" ColumnName="trat" />
+                <ScalarProperty Name="idExpositor" ColumnName="idExpositor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="catInformacion">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.catInformacion">
+              <MappingFragment StoreEntitySet="catInformacion">
+                <ScalarProperty Name="descripcionCorta" ColumnName="descripcionCorta" />
+                <ScalarProperty Name="tamañoArchivo" ColumnName="tamañoArchivo" />
+                <ScalarProperty Name="tipoArchivo" ColumnName="tipoArchivo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="idSeccion" ColumnName="idSeccion" />
+                <ScalarProperty Name="archivo" ColumnName="archivo" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="idDocumento" ColumnName="idDocumento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="catMensajes">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.catMensajes">
+              <MappingFragment StoreEntitySet="catMensajes">
+                <ScalarProperty Name="idDepartamentoCanalizacion" ColumnName="idDepartamentoCanalizacion" />
+                <ScalarProperty Name="FechaEntrada" ColumnName="FechaEntrada" />
+                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="InistitucionNombre" ColumnName="InistitucionNombre" />
+                <ScalarProperty Name="ApMaterno" ColumnName="ApMaterno" />
+                <ScalarProperty Name="ApPaterno" ColumnName="ApPaterno" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="idCorreo" ColumnName="idCorreo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="catModulos">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.catModulos">
+              <MappingFragment StoreEntitySet="catModulos">
+                <ScalarProperty Name="idTaller" ColumnName="idTaller" />
+                <ScalarProperty Name="orden" ColumnName="orden" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="idModulo" ColumnName="idModulo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="catNoticia">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.catNoticia">
+              <MappingFragment StoreEntitySet="catNoticia">
+                <ScalarProperty Name="HabilitarComentarios" ColumnName="HabilitarComentarios" />
+                <ScalarProperty Name="urlSlug" ColumnName="urlSlug" />
+                <ScalarProperty Name="revisorId" ColumnName="revisorId" />
+                <ScalarProperty Name="autorId" ColumnName="autorId" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="NoticiaFecha" ColumnName="NoticiaFecha" />
+                <ScalarProperty Name="NoticiaImagen" ColumnName="NoticiaImagen" />
+                <ScalarProperty Name="NoticiaTexto" ColumnName="NoticiaTexto" />
+                <ScalarProperty Name="NoticiaTitulo" ColumnName="NoticiaTitulo" />
+                <ScalarProperty Name="idNoticia" ColumnName="idNoticia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="catProyecto">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.catProyecto">
+              <MappingFragment StoreEntitySet="catProyecto">
+                <ScalarProperty Name="ProyectoEstado" ColumnName="ProyectoEstado" />
+                <ScalarProperty Name="ProyectoFecha" ColumnName="ProyectoFecha" />
+                <ScalarProperty Name="autorId" ColumnName="autorId" />
+                <ScalarProperty Name="ProyectoArchivo" ColumnName="ProyectoArchivo" />
+                <ScalarProperty Name="ProyectoUrlSlug" ColumnName="ProyectoUrlSlug" />
+                <ScalarProperty Name="ProyectoDescripcion" ColumnName="ProyectoDescripcion" />
+                <ScalarProperty Name="ProyectoTitulo" ColumnName="ProyectoTitulo" />
+                <ScalarProperty Name="idProyecto" ColumnName="idProyecto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="catRequisitos">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.catRequisitos">
+              <MappingFragment StoreEntitySet="catRequisitos">
+                <ScalarProperty Name="idConvocatoria" ColumnName="idConvocatoria" />
+                <ScalarProperty Name="ArchivoRequisito" ColumnName="ArchivoRequisito" />
+                <ScalarProperty Name="DescripcionRequisito" ColumnName="DescripcionRequisito" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="catSeccion">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.catSeccion">
+              <MappingFragment StoreEntitySet="catSeccion">
+                <ScalarProperty Name="idTipoCliente" ColumnName="idTipoCliente" />
+                <ScalarProperty Name="idCreador" ColumnName="idCreador" />
+                <ScalarProperty Name="tipoSeccion" ColumnName="tipoSeccion" />
+                <ScalarProperty Name="SeccionNombre" ColumnName="SeccionNombre" />
+                <ScalarProperty Name="idSeccion" ColumnName="idSeccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="catSlider">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.catSlider">
+              <MappingFragment StoreEntitySet="catSlider">
+                <ScalarProperty Name="idSlider" ColumnName="idSlider" />
+                <ScalarProperty Name="idNoticia" ColumnName="idNoticia" />
+                <ScalarProperty Name="Destino" ColumnName="Destino" />
+                <ScalarProperty Name="SliderFin" ColumnName="SliderFin" />
+                <ScalarProperty Name="SliderInicio" ColumnName="SliderInicio" />
+                <ScalarProperty Name="Prioridad" ColumnName="Prioridad" />
+                <ScalarProperty Name="SliderUrlSlug" ColumnName="SliderUrlSlug" />
+                <ScalarProperty Name="SliderImagen" ColumnName="SliderImagen" />
+                <ScalarProperty Name="SliderDescripcion" ColumnName="SliderDescripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="catTalleres">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.catTalleres">
+              <MappingFragment StoreEntitySet="catTalleres">
+                <ScalarProperty Name="incluye" ColumnName="incluye" />
+                <ScalarProperty Name="Costo" ColumnName="Costo" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="Cupo" ColumnName="Cupo" />
+                <ScalarProperty Name="Duracion" ColumnName="Duracion" />
+                <ScalarProperty Name="LogroTaller" ColumnName="LogroTaller" />
+                <ScalarProperty Name="DirigidoA" ColumnName="DirigidoA" />
+                <ScalarProperty Name="Objetivo" ColumnName="Objetivo" />
+                <ScalarProperty Name="idExpositor" ColumnName="idExpositor" />
+                <ScalarProperty Name="idTaller" ColumnName="idTaller" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="catVuMotivos">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.catVuMotivos">
+              <MappingFragment StoreEntitySet="catVuMotivos">
+                <ScalarProperty Name="descMotivo" ColumnName="descMotivo" />
+                <ScalarProperty Name="idDepartamento" ColumnName="idDepartamento" />
+                <ScalarProperty Name="idMotivo" ColumnName="idMotivo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="comentario">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.comentario">
+              <MappingFragment StoreEntitySet="comentario">
+                <ScalarProperty Name="idPost" ColumnName="idPost" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="autor" ColumnName="autor" />
+                <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="contenido" ColumnName="contenido" />
+                <ScalarProperty Name="idComentario" ColumnName="idComentario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="configuracionSitio">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.configuracionSitio">
+              <MappingFragment StoreEntitySet="configuracionSitio">
+                <ScalarProperty Name="NombreConfiguracion" ColumnName="NombreConfiguracion" />
+                <ScalarProperty Name="Extencion" ColumnName="Extencion" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="ContactoLinea3" ColumnName="ContactoLinea3" />
+                <ScalarProperty Name="ContactoLinea2" ColumnName="ContactoLinea2" />
+                <ScalarProperty Name="ContactoLinea1" ColumnName="ContactoLinea1" />
+                <ScalarProperty Name="SitioDisponible" ColumnName="SitioDisponible" />
+                <ScalarProperty Name="imagenOrganigrama" ColumnName="imagenOrganigrama" />
+                <ScalarProperty Name="imagenFrontal" ColumnName="imagenFrontal" />
+                <ScalarProperty Name="ubicacion" ColumnName="ubicacion" />
+                <ScalarProperty Name="misionvision" ColumnName="misionvision" />
+                <ScalarProperty Name="antecedentes" ColumnName="antecedentes" />
+                <ScalarProperty Name="NombreSitioCorto" ColumnName="NombreSitioCorto" />
+                <ScalarProperty Name="NombreSitioLargo" ColumnName="NombreSitioLargo" />
+                <ScalarProperty Name="idPagina" ColumnName="idPagina" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="configuracionSitioDocumentos">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.configuracionSitioDocumentos">
+              <MappingFragment StoreEntitySet="configuracionSitioDocumentos">
+                <ScalarProperty Name="idSitio" ColumnName="idSitio" />
+                <ScalarProperty Name="urlArchivo" ColumnName="urlArchivo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="idDoc" ColumnName="idDoc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contactoConvocatoria">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.contactoConvocatoria">
+              <MappingFragment StoreEntitySet="contactoConvocatoria">
+                <ScalarProperty Name="idConvocatoria" ColumnName="idConvocatoria" />
+                <ScalarProperty Name="Sitio" ColumnName="Sitio" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+                <ScalarProperty Name="NombreContacto" ColumnName="NombreContacto" />
+                <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Counter">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.Counter">
+              <MappingFragment StoreEntitySet="Counter">
+                <ScalarProperty Name="ExpireAt" ColumnName="ExpireAt" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="datosUsuario">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.datosUsuario">
+              <MappingFragment StoreEntitySet="datosUsuario">
+                <ScalarProperty Name="idAsp" ColumnName="idAsp" />
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
+                <ScalarProperty Name="ApMaterno" ColumnName="ApMaterno" />
+                <ScalarProperty Name="ApPaterno" ColumnName="ApPaterno" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="noEmpleado" ColumnName="noEmpleado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="galeriaNoticias">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.galeriaNoticias">
+              <MappingFragment StoreEntitySet="galeriaNoticias">
+                <ScalarProperty Name="rutaThumbnail" ColumnName="rutaThumbnail" />
+                <ScalarProperty Name="rutaArchivo" ColumnName="rutaArchivo" />
+                <ScalarProperty Name="idNoticia" ColumnName="idNoticia" />
+                <ScalarProperty Name="idImagen" ColumnName="idImagen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hash">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.Hash">
+              <MappingFragment StoreEntitySet="Hash">
+                <ScalarProperty Name="ExpireAt" ColumnName="ExpireAt" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Field" ColumnName="Field" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Job">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.Job">
+              <MappingFragment StoreEntitySet="Job">
+                <ScalarProperty Name="ExpireAt" ColumnName="ExpireAt" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="Arguments" ColumnName="Arguments" />
+                <ScalarProperty Name="InvocationData" ColumnName="InvocationData" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobParameter">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.JobParameter">
+              <MappingFragment StoreEntitySet="JobParameter">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobQueue">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.JobQueue">
+              <MappingFragment StoreEntitySet="JobQueue">
+                <ScalarProperty Name="FetchedAt" ColumnName="FetchedAt" />
+                <ScalarProperty Name="Queue" ColumnName="Queue" />
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="List">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.List">
+              <MappingFragment StoreEntitySet="List">
+                <ScalarProperty Name="ExpireAt" ColumnName="ExpireAt" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Permisos">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.Permisos">
+              <MappingFragment StoreEntitySet="Permisos">
+                <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+                <ScalarProperty Name="ipPeticion" ColumnName="ipPeticion" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+                <ScalarProperty Name="autorizado" ColumnName="autorizado" />
+                <ScalarProperty Name="razon" ColumnName="razon" />
+                <ScalarProperty Name="idAdministrador" ColumnName="idAdministrador" />
+                <ScalarProperty Name="horaRegreso" ColumnName="horaRegreso" />
+                <ScalarProperty Name="horaSalida" ColumnName="horaSalida" />
+                <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+                <ScalarProperty Name="idPermiso" ColumnName="idPermiso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Post">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.Post">
+              <MappingFragment StoreEntitySet="Post">
+                <ScalarProperty Name="urlSlug" ColumnName="urlSlug" />
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+                <ScalarProperty Name="idAutor" ColumnName="idAutor" />
+                <ScalarProperty Name="fechaModificacion" ColumnName="fechaModificacion" />
+                <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="tags" ColumnName="tags" />
+                <ScalarProperty Name="blogContenido" ColumnName="blogContenido" />
+                <ScalarProperty Name="blogTitulo" ColumnName="blogTitulo" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Registro">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.Registro">
+              <MappingFragment StoreEntitySet="Registro">
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="idConvocatoria" ColumnName="idConvocatoria" />
+                <ScalarProperty Name="DescripcionEmpresa" ColumnName="DescripcionEmpresa" />
+                <ScalarProperty Name="Localidad" ColumnName="Localidad" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="FolioRegistro" ColumnName="FolioRegistro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Schema">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.Schema">
+              <MappingFragment StoreEntitySet="Schema">
+                <ScalarProperty Name="Version" ColumnName="Version" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Server">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.Server">
+              <MappingFragment StoreEntitySet="Server">
+                <ScalarProperty Name="LastHeartbeat" ColumnName="LastHeartbeat" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Set">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.Set">
+              <MappingFragment StoreEntitySet="Set">
+                <ScalarProperty Name="ExpireAt" ColumnName="ExpireAt" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="State">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.State">
+              <MappingFragment StoreEntitySet="State">
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TiposClientes">
+            <EntityTypeMapping TypeName="bdCinotamVersionOTCModel.TiposClientes">
+              <MappingFragment StoreEntitySet="TiposClientes">
+                <ScalarProperty Name="Contenido" ColumnName="Contenido" />
+                <ScalarProperty Name="Slug" ColumnName="Slug" />
+                <ScalarProperty Name="NombreTipo" ColumnName="NombreTipo" />
+                <ScalarProperty Name="idTipoUsuario" ColumnName="idTipoUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="bdCinotamVersionOTCModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

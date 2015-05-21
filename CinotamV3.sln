@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinotamV3", "CinotamV3\CinotamV3.csproj", "{DC8DC444-EC5A-45D2-8AF0-390BC183F085}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dal", "Dal\Dal.csproj", "{83D21955-1EA6-4D4E-AD9F-911652AE1B44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servicios", "Servicios\Servicios.csproj", "{AC601690-64F0-4BD8-A141-E35712C64C06}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC8DC444-EC5A-45D2-8AF0-390BC183F085}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC8DC444-EC5A-45D2-8AF0-390BC183F085}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC8DC444-EC5A-45D2-8AF0-390BC183F085}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC8DC444-EC5A-45D2-8AF0-390BC183F085}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83D21955-1EA6-4D4E-AD9F-911652AE1B44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83D21955-1EA6-4D4E-AD9F-911652AE1B44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83D21955-1EA6-4D4E-AD9F-911652AE1B44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83D21955-1EA6-4D4E-AD9F-911652AE1B44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC601690-64F0-4BD8-A141-E35712C64C06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC601690-64F0-4BD8-A141-E35712C64C06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC601690-64F0-4BD8-A141-E35712C64C06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC601690-64F0-4BD8-A141-E35712C64C06}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
